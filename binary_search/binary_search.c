@@ -12,6 +12,7 @@ typedef struct root{
 	binary_object *root;
 } root;
 
+void inorder_tree_walk(binary_object *x);
 binary_object *iterative_tree_serarch(binary_object *x, int k);
 binary_object *tree_minimum(binary_object *x);
 binary_object *tree_maximum(binary_object *x);
@@ -22,6 +23,14 @@ void tree_delete(root *T, binary_object *z);
 void transplant(root *T, binary_object *u, binary_object *v);
 
 
+
+void inorder_tree_walk(binary_object *x){
+	if (x != NULL){
+		inorder_tree_walk(x->left);
+		printf("%d, ", x->key);
+		inorder_tree_walk(x->right);
+	}
+}
 
 binary_object *iterative_tree_serarch(binary_object *x, int k){
 	while (x != NULL && k != x->key){
@@ -157,7 +166,9 @@ int main(void){
 				tree_delete(T, iterative_tree_serarch(T->root, new_key));
 			}
 		}
-		printf("max:%d\nmin:%d\n=========\n", tree_maximum(T->root)->key, tree_minimum(T->root)->key);
+		//printf("max:%d\nmin:%d\n=========\n", tree_maximum(T->root)->key, tree_minimum(T->root)->key);
+		inorder_tree_walk(T->root);
+		printf("\n=========\n");
 		rewind(stdin);
 		scanf("%c %d", &ope, &new_key);
 	}
