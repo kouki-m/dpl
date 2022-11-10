@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
+
 typedef struct binary_object{
 	int	key;
 	struct binary_object *left;
@@ -152,12 +153,13 @@ int main(void){
 	int	new_key;
 	binary_object *max, *min;
 	char ope;
+	int	arr[1000000];
 
 	max = malloc(sizeof(binary_object));
 	min = malloc(sizeof(binary_object));
 	T = malloc(sizeof(root));
 	T->root = NULL;
-	scanf("%c %d", &ope, &new_key);
+	/*scanf("%c %d", &ope, &new_key);
 	while (new_key != 0){
 		if (ope == 'i'){
 			tree_insert(T, new_key);
@@ -171,6 +173,21 @@ int main(void){
 		printf("\n=========\n");
 		rewind(stdin);
 		scanf("%c %d", &ope, &new_key);
+	}*/
+	for (int i = 0; i < 1000000; i++){
+		arr[i] = rand() % 1000000;
+		tree_insert(T, arr[i]);
+		printf("%d, ", i);
 	}
+	printf("\n");
+	for (int i = 0; i < 1000000; i++){
+		if (iterative_tree_serarch(T->root, arr[i]) == NULL){
+			printf("error\n");
+			return 1;
+		}
+		printf("%d, ", arr[i]);
+	}
+	printf("success\n");
+	inorder_tree_walk(T->root);
 	return 0;
 }
