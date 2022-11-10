@@ -175,19 +175,19 @@ int main(void){
 		scanf("%c %d", &ope, &new_key);
 	}*/
 	for (int i = 0; i < 1000000; i++){
-		arr[i] = rand() % 1000000;
-		tree_insert(T, arr[i]);
+		//arr[i] = rand() % 1000000;
+		tree_insert(T, i);
 		printf("%d, ", i);
 	}
 	printf("\n");
 	for (int i = 0; i < 1000000; i++){
-		if (iterative_tree_serarch(T->root, arr[i]) == NULL){
+		if (iterative_tree_serarch(T->root, arr[i])->key != i){
 			printf("error\n");
-			return 1;
+			exit(0);
 		}
-		printf("%d, ", arr[i]);
+		printf("%d, ", i);
 	}
 	printf("success\n");
-	inorder_tree_walk(T->root);
+	//inorder_tree_walk(T->root);
 	return 0;
 }
