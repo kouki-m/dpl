@@ -181,7 +181,7 @@ int main(void){
 	}
 	printf("\n");
 	for (int i = 0; i < 1000000; i++){
-		if (iterative_tree_serarch(T->root, arr[i])->key != i){
+		if (iterative_tree_serarch(T->root, i)->key != i){
 			printf("error\n");
 			exit(0);
 		}
