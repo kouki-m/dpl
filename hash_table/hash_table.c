@@ -42,6 +42,23 @@ int hash_insert(int *T, int k){
 	return -1;
 }
 
+int hash_delete(int *T, int k){
+    int i, q, r;
+
+    i = 0;
+    while(i != HASHSIZE){
+        q = hash_function(k, i);
+        if (T[q] == k){
+            T[q] = 0;
+            break;
+        }
+        i++;
+    }
+    while(T[q]){
+
+    }
+}
+
 int hash_search(int *T, int k){
 	int i, q;
 
